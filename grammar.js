@@ -96,10 +96,11 @@ module.exports = grammar({
       prec.left(1, seq($.expression, "&&", $.expression)),
       prec.left(0, seq($.expression, "||", $.expression))
     ),
-  term: $ => choice($.param, $.boolean, $.bytes, $.number, $.date, $.string, $.variable, $.set),
+  term: $ => choice($.null, $.param, $.boolean, $.bytes, $.number, $.date, $.string, $.variable, $.set),
   fact_term: $ => choice($.param, $.boolean, $.bytes, $.number, $.date, $.string, $.set),
   set_term: $ => choice($.param, $.boolean, $.bytes, $.number, $.date, $.string),
   boolean: $ => choice("true", "false"),
+  null: $ => token("null"),
   bytes: $ => token(seq("hex:", optional(repeat1(/[0-9a-f]{2}/)))),
   number: $ => token(seq(optional("-"), repeat1(/[0-9]/))),
   date: $ => token(

@@ -300,20 +300,27 @@
   {
     "type": "rule",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "predicate",
-          "named": true
-        },
-        {
-          "type": "rule_body",
-          "named": true
-        }
-      ]
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "rule_body",
+            "named": true
+          }
+        ]
+      },
+      "head": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "predicate",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -430,6 +437,10 @@
         },
         {
           "type": "date",
+          "named": true
+        },
+        {
+          "type": "null",
           "named": true
         },
         {
@@ -618,6 +629,10 @@
   {
     "type": "false",
     "named": false
+  },
+  {
+    "type": "null",
+    "named": true
   },
   {
     "type": "number",

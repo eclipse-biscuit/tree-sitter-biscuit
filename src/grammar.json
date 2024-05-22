@@ -93,16 +93,24 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "predicate"
+          "type": "FIELD",
+          "name": "head",
+          "content": {
+            "type": "SYMBOL",
+            "name": "predicate"
+          }
         },
         {
           "type": "STRING",
           "value": "<-"
         },
         {
-          "type": "SYMBOL",
-          "name": "rule_body"
+          "type": "FIELD",
+          "name": "body",
+          "content": {
+            "type": "SYMBOL",
+            "name": "rule_body"
+          }
         }
       ]
     },
@@ -655,6 +663,10 @@
       "members": [
         {
           "type": "SYMBOL",
+          "name": "null"
+        },
+        {
+          "type": "SYMBOL",
           "name": "param"
         },
         {
@@ -761,6 +773,13 @@
           "value": "false"
         }
       ]
+    },
+    "null": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "null"
+      }
     },
     "bytes": {
       "type": "TOKEN",
@@ -1119,4 +1138,3 @@
   "inline": [],
   "supertypes": []
 }
-
