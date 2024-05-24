@@ -319,6 +319,40 @@
         }
       ]
     },
+    "method_argument": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "closure"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "expression"
+        }
+      ]
+    },
+    "closure": {
+      "type": "PREC",
+      "value": 11,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "variable"
+          },
+          {
+            "type": "STRING",
+            "value": "->"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
+    },
     "expression": {
       "type": "CHOICE",
       "members": [
@@ -388,11 +422,16 @@
             "value": "("
           },
           {
-            "type": "REPEAT",
-            "content": {
-              "type": "SYMBOL",
-              "name": "expression"
-            }
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "method_argument"
+              },
+              {
+                "type": "BLANK"
+              }
+            ]
           },
           {
             "type": "STRING",
@@ -604,6 +643,14 @@
                   {
                     "type": "STRING",
                     "value": "!="
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "==="
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "!=="
                   }
                 ]
               },
@@ -663,15 +710,15 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "null"
-        },
-        {
-          "type": "SYMBOL",
           "name": "param"
         },
         {
           "type": "SYMBOL",
           "name": "boolean"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "null"
         },
         {
           "type": "SYMBOL",
@@ -687,15 +734,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "string"
+          "name": "set"
         },
         {
           "type": "SYMBOL",
           "name": "variable"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "set"
         }
       ]
     },
@@ -712,6 +755,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "null"
+        },
+        {
+          "type": "SYMBOL",
           "name": "bytes"
         },
         {
@@ -721,10 +768,6 @@
         {
           "type": "SYMBOL",
           "name": "date"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "string"
         },
         {
           "type": "SYMBOL",
@@ -742,6 +785,10 @@
         {
           "type": "SYMBOL",
           "name": "boolean"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "null"
         },
         {
           "type": "SYMBOL",
@@ -775,11 +822,8 @@
       ]
     },
     "null": {
-      "type": "TOKEN",
-      "content": {
-        "type": "STRING",
-        "value": "null"
-      }
+      "type": "STRING",
+      "value": "null"
     },
     "bytes": {
       "type": "TOKEN",

@@ -54,4 +54,27 @@ head($var, true) <- fact1($var), !"test".contains("te") == 1 > "test".length();
                         (number)))))))
             (expression
               (term
-                (number)))))))))
+                (number))))))))
+  (authorizer_element
+    (rule
+      (predicate
+        (nname)
+        (term
+          (variable))
+        (term
+          (boolean)))
+      (rule_body
+        (predicate
+          (nname)
+          (term
+            (variable)))
+              (ERROR
+              (string)
+              (nname)
+              (string)
+              (string))
+            (predicate
+              (nname)
+              (term
+                (boolean
+                  (MISSING "true"))))))))

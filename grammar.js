@@ -60,6 +60,13 @@ module.exports = grammar({
                repeat(seq(",", $.fact_term)),
                ")"
              ),
+  method_argument: $ =>
+    choice(
+      $.closure,
+      $.expression,
+    ),
+  closure: $ => 
+      prec(11, seq($.variable, "->", $.expression)),
   expression: $ =>
     choice(
       $.parens,
@@ -67,7 +74,6 @@ module.exports = grammar({
       $.unary_op_expression,
       $.binary_op_expression,
       $.term
-      // todo methods
     ),
   parens: $ =>
     prec(10, seq("(", $.expression, ")")),
@@ -77,7 +83,7 @@ module.exports = grammar({
       ".",
       $.nname,
       "(",
-      repeat($.expression),
+      optional($.method_argument),
       ")"
     )),
   unary_op_expression: $ =>
@@ -92,15 +98,17 @@ module.exports = grammar({
       prec.left(3, seq($.expression, "^", $.expression)),
       // todo comparison operators are NOT associative, but not marking them as such
       // generates an ambiguity
-      prec.left(2, seq($.expression, choice(">", "<", ">=", "<=", "==", "!="), $.expression)),
+      // declaring -> as an operator instead of declaring a proper closure item
+      // is a hack, but i have not found how to do it properly
+      prec.left(2, seq($.expression, choice(">", "<", ">=", "<=", "==", "!=", "===", "!=="), $.expression)),
       prec.left(1, seq($.expression, "&&", $.expression)),
       prec.left(0, seq($.expression, "||", $.expression))
     ),
-  term: $ => choice($.null, $.param, $.boolean, $.bytes, $.number, $.date, $.string, $.variable, $.set),
-  fact_term: $ => choice($.param, $.boolean, $.bytes, $.number, $.date, $.string, $.set),
-  set_term: $ => choice($.param, $.boolean, $.bytes, $.number, $.date, $.string),
+  term: $ => choice($.param, $.boolean, $.null, $.bytes, $.number, $.date, $.set, $.variable),
+  fact_term: $ => choice($.param, $.boolean, $.null, $.bytes, $.number, $.date, $.set),
+  set_term: $ => choice($.param, $.boolean, $.null, $.bytes, $.number, $.date, $.string),
   boolean: $ => choice("true", "false"),
-  null: $ => token("null"),
+  null: $ => "null",
   bytes: $ => token(seq("hex:", optional(repeat1(/[0-9a-f]{2}/)))),
   number: $ => token(seq(optional("-"), repeat1(/[0-9]/))),
   date: $ => token(
