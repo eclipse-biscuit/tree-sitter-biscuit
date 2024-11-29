@@ -23,7 +23,7 @@ module.exports = grammar({
       field('body', $.rule_body)
     ),
   check: $ => seq(
-       choice("check if", "check all"),
+       choice("check if", "check all", "reject if"),
        $.rule_body,
        repeat(seq(
         "or",

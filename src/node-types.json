@@ -789,6 +789,10 @@
     "named": false
   },
   {
+    "type": "reject if",
+    "named": false
+  },
+  {
     "type": "string",
     "named": true
   },

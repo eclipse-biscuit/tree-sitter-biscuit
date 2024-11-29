@@ -1,0 +1,29 @@
+======
+Checks
+======
+
+check if true;
+check all true;
+reject if true;
+
+---
+
+(source_file
+  (authorizer_element
+    (check
+      (rule_body
+        (expression
+          (term
+            (boolean))))))
+  (authorizer_element
+    (check
+      (rule_body
+        (expression
+          (term
+            (boolean))))))
+  (authorizer_element
+    (check
+      (rule_body
+        (expression
+          (term
+            (boolean)))))))

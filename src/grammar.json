@@ -127,6 +127,10 @@
             {
               "type": "STRING",
               "value": "check all"
+            },
+            {
+              "type": "STRING",
+              "value": "reject if"
             }
           ]
         },
