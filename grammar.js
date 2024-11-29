@@ -160,7 +160,8 @@ module.exports = grammar({
   origin_clause: $ =>
     seq("trusting", $.origin_element, repeat(seq(",", $.origin_element))),
   origin_element: $ =>
-    choice("previous", "authority", seq("ed25519/", repeat1(/[0-9a-f]{2}/))),
+    choice("previous", "authority", seq($.sig_alg, repeat1(/[0-9a-f]{2}/))),
+  sig_alg: $ => choice("ed25519/", "secp256r1/"),
   comment: $ => choice(
     $.line_comment,
     $.block_comment

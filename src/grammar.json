@@ -1212,8 +1212,8 @@
           "type": "SEQ",
           "members": [
             {
-              "type": "STRING",
-              "value": "ed25519/"
+              "type": "SYMBOL",
+              "name": "sig_alg"
             },
             {
               "type": "REPEAT1",
@@ -1223,6 +1223,19 @@
               }
             }
           ]
+        }
+      ]
+    },
+    "sig_alg": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "ed25519/"
+        },
+        {
+          "type": "STRING",
+          "value": "secp256r1/"
         }
       ]
     },
