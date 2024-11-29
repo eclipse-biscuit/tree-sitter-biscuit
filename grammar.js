@@ -104,8 +104,8 @@ module.exports = grammar({
       prec.left(1, seq($.expression, "&&", $.expression)),
       prec.left(0, seq($.expression, "||", $.expression))
     ),
-  term: $ => choice($.param, $.boolean, $.null, $.bytes, $.number, $.date, $.set, $.variable),
-  fact_term: $ => choice($.param, $.boolean, $.null, $.bytes, $.number, $.date, $.set),
+  term: $ => choice($.param, $.boolean, $.null, $.bytes, $.number, $.date, $.set, $.array, $.map, $.variable),
+  fact_term: $ => choice($.param, $.boolean, $.null, $.bytes, $.number, $.date, $.set, $.array, $.map),
   set_term: $ => choice($.param, $.boolean, $.null, $.bytes, $.number, $.date, $.string),
   boolean: $ => choice("true", "false"),
   null: $ => "null",
@@ -119,15 +119,40 @@ module.exports = grammar({
     /(\\"|[^"])*/,
     "\""
   )),
-  set: $ => seq("[",
+  set: $ => seq("{",
+                choice(
+                  ",",
+                  seq(
+                    $.set_term,
+                    repeat(seq(
+                      ",",
+                      optional($.set_term)
+                    )),
+                  ),
+                ),
+                "}"
+            ),
+  array: $ => seq("[",
                 optional(seq(
-                  $.set_term,
+                  $.fact_term,
                   repeat(seq(
                     ",",
-                    optional($.set_term)
+                    optional($.fact_term)
                   )),
                 )),
                 "]"
+            ),
+  map_key: $ => choice($.number, $.string),
+  map_entry: $ => seq($.map_key, ":", $.fact_term),
+  map: $ => seq("{",
+                optional(seq(
+                  $.map_entry,
+                  repeat(seq(
+                    ",",
+                    optional($.map_entry)
+                  )),
+                )),
+                "}"
             ),
   nname: $ => seq(/[a-zA-Z]/, repeat(/[a-zA-Z0-9_:]/)),
   variable: $ => seq("$", repeat1(/[a-zA-Z0-9_:]/)),

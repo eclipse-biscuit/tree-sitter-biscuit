@@ -14,12 +14,12 @@ check if [1,2,3].any($i -> $i == 2);
           (methods
             (expression
               (term
-                (set
-                  (set_term
+                (array
+                  (fact_term
                     (number))
-                  (set_term
+                  (fact_term
                     (number))
-                  (set_term
+                  (fact_term
                     (number)))))
             (nname)
             (method_argument
