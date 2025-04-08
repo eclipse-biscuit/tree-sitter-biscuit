@@ -1,0 +1,35 @@
+========
+Closures
+========
+
+check if [1,2,3].any($i -> $i == 2);
+
+---
+
+(source_file
+  (authorizer_element
+    (check
+      (rule_body
+        (expression
+          (methods
+            (expression
+              (term
+                (array
+                  (fact_term
+                    (number))
+                  (fact_term
+                    (number))
+                  (fact_term
+                    (number)))))
+            (nname)
+            (method_argument
+                  (closure
+                    (variable)
+                (expression
+                  (binary_op_expression
+                    (expression
+                      (term
+                        (variable)))
+                    (expression
+                      (term
+                        (number)))))))))))))

@@ -26,6 +26,7 @@
   "trusting"
   "check if"
   "check all"
+  "reject if"
   "allow if"
   "deny if"
 ] @keyword
@@ -37,15 +38,18 @@
 
 [
   "<-"
+  "->"
 ] @keyword.operator
 
 ;; Punctuation
-[ "," ] @punctuation.delimiter
+[ "," ":" ] @punctuation.delimiter
 
 [ "("
   ")"
   "["
   "]"
+  "{"
+  "}"
 ] @punctuation.bracket
 
 [

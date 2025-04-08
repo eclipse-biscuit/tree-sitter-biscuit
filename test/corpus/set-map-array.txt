@@ -1,0 +1,66 @@
+===============
+Maps and arrays
+===============
+
+fact({,});
+fact({"a","b"});
+fact([]);
+fact([2, true, [2]]);
+fact({});
+fact({"a": true, 2: {}});
+
+---
+
+(source_file
+    (authorizer_element
+      (fact
+        (nname)
+        (fact_term
+          (set))))
+    (authorizer_element
+      (fact
+        (nname)
+        (fact_term
+          (set
+            (set_term
+              (string))
+            (set_term
+              (string))))))
+    (authorizer_element
+      (fact
+        (nname)
+        (fact_term
+          (array))))
+    (authorizer_element
+      (fact
+        (nname)
+        (fact_term
+          (array
+            (fact_term
+              (number))
+            (fact_term
+              (boolean))
+            (fact_term
+              (array
+                (fact_term
+                  (number))))))))
+    (authorizer_element
+      (fact
+        (nname)
+        (fact_term
+          (map))))
+    (authorizer_element
+      (fact
+        (nname)
+        (fact_term
+          (map
+            (map_entry
+              (map_key
+                (string))
+              (fact_term
+                (boolean)))
+            (map_entry
+              (map_key
+                (number))
+              (fact_term
+                (map))))))))

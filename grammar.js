@@ -23,7 +23,7 @@ module.exports = grammar({
       field('body', $.rule_body)
     ),
   check: $ => seq(
-       choice("check if", "check all"),
+       choice("check if", "check all", "reject if"),
        $.rule_body,
        repeat(seq(
         "or",
@@ -60,6 +60,13 @@ module.exports = grammar({
                repeat(seq(",", $.fact_term)),
                ")"
              ),
+  method_argument: $ =>
+    choice(
+      $.closure,
+      $.expression,
+    ),
+  closure: $ => 
+      prec(11, seq($.variable, "->", $.expression)),
   expression: $ =>
     choice(
       $.parens,
@@ -67,7 +74,6 @@ module.exports = grammar({
       $.unary_op_expression,
       $.binary_op_expression,
       $.term
-      // todo methods
     ),
   parens: $ =>
     prec(10, seq("(", $.expression, ")")),
@@ -77,7 +83,7 @@ module.exports = grammar({
       ".",
       $.nname,
       "(",
-      repeat($.expression),
+      optional($.method_argument),
       ")"
     )),
   unary_op_expression: $ =>
@@ -92,14 +98,17 @@ module.exports = grammar({
       prec.left(3, seq($.expression, "^", $.expression)),
       // todo comparison operators are NOT associative, but not marking them as such
       // generates an ambiguity
-      prec.left(2, seq($.expression, choice(">", "<", ">=", "<=", "==", "!="), $.expression)),
+      // declaring -> as an operator instead of declaring a proper closure item
+      // is a hack, but i have not found how to do it properly
+      prec.left(2, seq($.expression, choice(">", "<", ">=", "<=", "==", "!=", "===", "!=="), $.expression)),
       prec.left(1, seq($.expression, "&&", $.expression)),
       prec.left(0, seq($.expression, "||", $.expression))
     ),
-  term: $ => choice($.param, $.boolean, $.bytes, $.number, $.date, $.string, $.variable, $.set),
-  fact_term: $ => choice($.param, $.boolean, $.bytes, $.number, $.date, $.string, $.set),
-  set_term: $ => choice($.param, $.boolean, $.bytes, $.number, $.date, $.string),
+  term: $ => choice($.param, $.boolean, $.null, $.bytes, $.number, $.date, $.set, $.array, $.map, $.variable),
+  fact_term: $ => choice($.param, $.boolean, $.null, $.bytes, $.number, $.date, $.set, $.array, $.map),
+  set_term: $ => choice($.param, $.boolean, $.null, $.bytes, $.number, $.date, $.string),
   boolean: $ => choice("true", "false"),
+  null: $ => "null",
   bytes: $ => token(seq("hex:", optional(repeat1(/[0-9a-f]{2}/)))),
   number: $ => token(seq(optional("-"), repeat1(/[0-9]/))),
   date: $ => token(
@@ -110,15 +119,40 @@ module.exports = grammar({
     /(\\"|[^"])*/,
     "\""
   )),
-  set: $ => seq("[",
+  set: $ => seq("{",
+                choice(
+                  ",",
+                  seq(
+                    $.set_term,
+                    repeat(seq(
+                      ",",
+                      optional($.set_term)
+                    )),
+                  ),
+                ),
+                "}"
+            ),
+  array: $ => seq("[",
                 optional(seq(
-                  $.set_term,
+                  $.fact_term,
                   repeat(seq(
                     ",",
-                    optional($.set_term)
+                    optional($.fact_term)
                   )),
                 )),
                 "]"
+            ),
+  map_key: $ => choice($.number, $.string),
+  map_entry: $ => seq($.map_key, ":", $.fact_term),
+  map: $ => seq("{",
+                optional(seq(
+                  $.map_entry,
+                  repeat(seq(
+                    ",",
+                    optional($.map_entry)
+                  )),
+                )),
+                "}"
             ),
   nname: $ => seq(/[a-zA-Z]/, repeat(/[a-zA-Z0-9_:]/)),
   variable: $ => seq("$", repeat1(/[a-zA-Z0-9_:]/)),
@@ -126,7 +160,8 @@ module.exports = grammar({
   origin_clause: $ =>
     seq("trusting", $.origin_element, repeat(seq(",", $.origin_element))),
   origin_element: $ =>
-    choice("previous", "authority", seq("ed25519/", repeat1(/[0-9a-f]{2}/))),
+    choice("previous", "authority", seq($.sig_alg, repeat1(/[0-9a-f]{2}/))),
+  sig_alg: $ => choice("ed25519/", "secp256r1/"),
   comment: $ => choice(
     $.line_comment,
     $.block_comment

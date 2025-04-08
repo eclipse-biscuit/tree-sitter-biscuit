@@ -1,0 +1,25 @@
+=================
+Scope annotations
+=================
+
+trusting previous, authority, ed25519/abcd, secp256r1/abcd;
+
+check if true trusting authority, previous, ed25519/abcd, secp256r1/abcd;
+
+---
+
+(source_file
+  (origin_clause
+    (origin_element)
+    (origin_element)
+    (origin_element (sig_alg))
+    (origin_element (sig_alg)))
+  (authorizer_element
+    (check
+      (rule_body
+        (expression (term (boolean)))
+        (origin_clause
+          (origin_element)
+          (origin_element)
+          (origin_element (sig_alg))
+          (origin_element (sig_alg)))))))

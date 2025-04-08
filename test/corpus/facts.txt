@@ -10,6 +10,7 @@ fact(
   2023-02-28T00:00:00Z,
   2023-02-28T00:00:00Z
 );
+fact(null);
 fact($variable);
 
 ---
@@ -50,6 +51,11 @@ fact($variable);
         (date))
       (fact_term
         (date))))
+  (authorizer_element
+    (fact
+      (nname)
+      (fact_term
+        (null))))
   (ERROR
     (predicate
       (nname)

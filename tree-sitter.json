@@ -1,0 +1,36 @@
+{
+  "grammars": [
+    {
+      "name": "biscuit",
+      "camelcase": "Biscuit",
+      "scope": "source.biscuit",
+      "file-types": [
+        ".bcdl",
+        ".biscuit-datalog"
+      ],
+      "injection-regex": "^biscuit$"
+    }
+  ],
+  "metadata": {
+    "version": "2.0.0",
+    "license": "Apache-2.0",
+    "description": "Parser for biscuit datalog",
+    "authors": [
+      {
+        "name": "Clément Delafargue",
+        "email": "clement@delafargue.name"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/biscuit-auth/tree-sitter-biscuit"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": false,
+    "node": false,
+    "python": false,
+    "rust": false,
+    "swift": false
+  }
+}
