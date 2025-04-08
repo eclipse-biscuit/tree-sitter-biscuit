@@ -9,8 +9,8 @@
     "install": "node-gyp-build",
     "prebuildify": "prebuildify --napi --strip"
   },
-  "author": "",
-  "license": "MIT",
+  "author": "Clément Delafargue",
+  "license": "Apache-2.0",
   "dependencies": {
     "node-gyp-build": "^4.8.0"
   },
