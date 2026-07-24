@@ -11,14 +11,14 @@ head($var, true) <- fact1($var), !"test".contains("te") == 1 > "test".length();
   (authorizer_element
     (rule
       (predicate
-        (nname)
+        (predicate_name)
         (term
           (variable))
         (term
           (boolean)))
       (rule_body
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (boolean))
           (term
@@ -32,7 +32,7 @@ head($var, true) <- fact1($var), !"test".contains("te") == 1 > "test".length();
               (term
                 (number)))))
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (variable))
           (term
@@ -58,14 +58,14 @@ head($var, true) <- fact1($var), !"test".contains("te") == 1 > "test".length();
   (authorizer_element
     (rule
       (predicate
-        (nname)
+        (predicate_name)
         (term
           (variable))
         (term
           (boolean)))
       (rule_body
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (variable)))
         (expression
@@ -79,7 +79,7 @@ head($var, true) <- fact1($var), !"test".contains("te") == 1 > "test".length();
                         (expression
                           (term
                             (string)))
-                        (nname)
+                        (method_name)
                         (method_argument
                           (expression
                             (term
@@ -92,4 +92,4 @@ head($var, true) <- fact1($var), !"test".contains("te") == 1 > "test".length();
                 (expression
                   (term
                     (string)))
-                (nname)))))))))
+                (method_name)))))))))

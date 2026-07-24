@@ -173,7 +173,7 @@
           "named": true
         },
         {
-          "type": "nname",
+          "type": "predicate_name",
           "named": true
         }
       ]
@@ -308,6 +308,11 @@
     }
   },
   {
+    "type": "method_name",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "methods",
     "named": true,
     "fields": {},
@@ -324,16 +329,11 @@
           "named": true
         },
         {
-          "type": "nname",
+          "type": "method_name",
           "named": true
         }
       ]
     }
-  },
-  {
-    "type": "nname",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "origin_clause",
@@ -374,11 +374,16 @@
       "required": true,
       "types": [
         {
-          "type": "nname",
+          "type": "param_name",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "param_name",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "parens",
@@ -419,7 +424,7 @@
       "required": true,
       "types": [
         {
-          "type": "nname",
+          "type": "predicate_name",
           "named": true
         },
         {
@@ -428,6 +433,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "predicate_name",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "rule",

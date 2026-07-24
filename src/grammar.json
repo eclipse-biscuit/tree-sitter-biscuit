@@ -254,8 +254,13 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "nname"
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_name"
+          },
+          "named": true,
+          "value": "predicate_name"
         },
         {
           "type": "STRING",
@@ -291,8 +296,13 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "nname"
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_name"
+          },
+          "named": true,
+          "value": "predicate_name"
         },
         {
           "type": "STRING",
@@ -419,8 +429,13 @@
             "value": "."
           },
           {
-            "type": "SYMBOL",
-            "name": "nname"
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_name"
+            },
+            "named": true,
+            "value": "method_name"
           },
           {
             "type": "STRING",
@@ -1128,7 +1143,7 @@
         }
       ]
     },
-    "nname": {
+    "_name": {
       "type": "SEQ",
       "members": [
         {
@@ -1168,8 +1183,13 @@
           "value": "{"
         },
         {
-          "type": "SYMBOL",
-          "name": "nname"
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_name"
+          },
+          "named": true,
+          "value": "param_name"
         },
         {
           "type": "STRING",

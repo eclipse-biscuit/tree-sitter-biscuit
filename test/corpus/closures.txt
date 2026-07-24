@@ -21,10 +21,10 @@ check if [1,2,3].any($i -> $i == 2);
                     (number))
                   (fact_term
                     (number)))))
-            (nname)
+            (method_name)
             (method_argument
-                  (closure
-                    (variable)
+              (closure
+                (variable)
                 (expression
                   (binary_op_expression
                     (expression
