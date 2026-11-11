@@ -52,14 +52,14 @@ module.exports = grammar({
       optional($.origin_clause)
     ),
   predicate: $ => seq(
-                    $.nname,
+                    alias($._name, $.predicate_name),
                     "(",
                     $.term,
                     repeat(seq(",", $.term)),
                     ")"
                   ),
   fact: $ => seq(
-               $.nname,
+               alias($._name, $.predicate_name),
                "(",
                $.fact_term,
                repeat(seq(",", $.fact_term)),
@@ -86,7 +86,7 @@ module.exports = grammar({
     prec(9, seq(
       $.expression,
       ".",
-      $.nname,
+      alias($._name, $.method_name),
       "(",
       optional($.method_argument),
       ")"
@@ -159,9 +159,13 @@ module.exports = grammar({
                 )),
                 "}"
             ),
-  nname: $ => seq(/[a-zA-Z]/, repeat(/[a-zA-Z0-9_:]/)),
+  // Shared identifier token, hidden and re-exposed via `alias()` at each use
+  // site as a distinct named node (`predicate_name`, `method_name`,
+  // `param_name`) so consumers (queries, the LSP) don't have to inspect the
+  // parent node to know what kind of name they're looking at.
+  _name: $ => seq(/[a-zA-Z]/, repeat(/[a-zA-Z0-9_:]/)),
   variable: $ => seq("$", repeat1(/[a-zA-Z0-9_:]/)),
-  param: $ => seq("{", $.nname, "}"),
+  param: $ => seq("{", alias($._name, $.param_name), "}"),
   origin_clause: $ =>
     seq("trusting", $.origin_element, repeat(seq(",", $.origin_element))),
   origin_element: $ =>

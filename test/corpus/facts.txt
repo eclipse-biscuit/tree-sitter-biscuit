@@ -20,7 +20,7 @@ fact($variable);
 (source_file
   (authorizer_element
     (fact
-      (nname)
+      (predicate_name)
       (fact_term
         (number))
       (fact_term
@@ -29,49 +29,49 @@ fact($variable);
         (number))))
   (authorizer_element
     (fact
-      (nname)
+      (predicate_name)
       (fact_term
         (boolean))
       (fact_term
         (boolean))))
   (authorizer_element
     (fact
-      (nname)
+      (predicate_name)
       (fact_term
         (bytes))))
   (authorizer_element
     (fact
-      (nname)
+      (predicate_name)
       (fact_term
         (number))
       (fact_term
         (number))))
   (authorizer_element
     (fact
-      (nname)
+      (predicate_name)
       (fact_term
         (date))
       (fact_term
         (date))))
   (authorizer_element
     (fact
-      (nname)
+      (predicate_name)
       (fact_term
         (null))))
   (authorizer_element
     (fact
-      (nname)
+      (predicate_name)
       (fact_term
         (string))))
   (authorizer_element
     (fact
-      (nname)
+      (predicate_name)
       (fact_term
         (set
           (set_term
             (string))))))
   (ERROR
     (predicate
-      (nname)
+      (predicate_name)
       (term
         (variable)))))

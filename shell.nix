@@ -1,10 +1,10 @@
-{ pkgs ? import <nixpkgs> {} }: with pkgs;
+{ pkgs ? import <unstable> {} }: with pkgs;
 
 mkShell {
   buildInputs = [
-    pkgconfig
     nodejs
     gcc
     tree-sitter
+    rustup
   ];
 }

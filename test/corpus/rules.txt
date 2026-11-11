@@ -10,20 +10,20 @@ head($var, true) <- fact1(true, $var), fact2($other, $var);
   (authorizer_element
     (rule
       (predicate
-        (nname)
+        (predicate_name)
         (term
           (variable))
         (term
           (boolean)))
       (rule_body
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (boolean))
           (term
             (variable)))
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (variable))
           (term

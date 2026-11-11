@@ -11,21 +11,21 @@ right("file1", "write");
 (source_file
   (authorizer_element
     (fact
-      (nname)
+      (predicate_name)
       (fact_term
         (string))
       (fact_term
         (string))))
   (authorizer_element
     (fact
-      (nname)
+      (predicate_name)
       (fact_term
         (string))
       (fact_term
         (string))))
   (authorizer_element
     (fact
-      (nname)
+      (predicate_name)
       (fact_term
         (string))
       (fact_term
@@ -43,12 +43,12 @@ owner("alice", "file1");
 (source_file
   (authorizer_element
     (fact
-      (nname)
+      (predicate_name)
       (fact_term
         (string))))
   (authorizer_element
     (fact
-      (nname)
+      (predicate_name)
       (fact_term
         (string))
       (fact_term
@@ -65,7 +65,7 @@ ns::fact_123("hello é	😁");
 (source_file
   (authorizer_element
     (fact
-      (nname)
+      (predicate_name)
       (fact_term
         (string)))))
 
@@ -82,15 +82,15 @@ check if resource($0), operation("read"), right($0, "read");
     (check
       (rule_body
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (variable)))
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (string)))
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (variable))
           (term
@@ -110,14 +110,14 @@ check if time($time), $time <= 2018-12-20T00:00:00Z;
     (check
       (rule_body
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (string))))))
   (authorizer_element
     (check
       (rule_body
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (variable)))
         (expression
@@ -142,7 +142,7 @@ check if resource($0), $0.matches("file[0-9]+.txt");
     (check
       (rule_body
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (variable)))
         (expression
@@ -150,7 +150,7 @@ check if resource($0), $0.matches("file[0-9]+.txt");
             (expression
               (term
                 (variable)))
-            (nname)
+            (method_name)
             (method_argument
               (expression
                 (term
@@ -259,7 +259,7 @@ check if "aaabde".contains("abd");
             (expression
               (term
                 (string)))
-            (nname)
+            (method_name)
             (method_argument
               (expression
                 (term
@@ -269,7 +269,7 @@ check if "aaabde".contains("abd");
             (expression
               (term
                 (string)))
-            (nname)
+            (method_name)
             (method_argument
               (expression
                 (term
@@ -282,7 +282,7 @@ check if "aaabde".contains("abd");
             (expression
               (term
                 (string)))
-            (nname)
+            (method_name)
             (method_argument
               (expression
                 (term
@@ -295,7 +295,7 @@ check if "aaabde".contains("abd");
             (expression
               (term
                 (string)))
-            (nname)
+            (method_name)
             (method_argument
               (expression
                 (term
@@ -314,22 +314,22 @@ check if resource($0), operation("read"), right($0, "read");
   (authorizer_element
     (rule
       (predicate
-        (nname)
+        (predicate_name)
         (term
           (variable))
         (term
           (string)))
       (rule_body
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (variable)))
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (variable)))
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (variable))
           (term
@@ -338,15 +338,15 @@ check if resource($0), operation("read"), right($0, "read");
     (check
       (rule_body
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (variable)))
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (string)))
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (variable))
           (term
@@ -366,16 +366,16 @@ check if valid_date($0), resource($0);
   (authorizer_element
     (rule
       (predicate
-        (nname)
+        (predicate_name)
         (term
           (string)))
       (rule_body
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (variable)))
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (string)))
         (expression
@@ -389,16 +389,16 @@ check if valid_date($0), resource($0);
   (authorizer_element
     (rule
       (predicate
-        (nname)
+        (predicate_name)
         (term
           (variable)))
       (rule_body
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (variable)))
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (variable)))
         (expression
@@ -418,7 +418,7 @@ check if valid_date($0), resource($0);
                     (set
                       (set_term
                         (string)))))
-                (nname)
+                (method_name)
                 (method_argument
                   (expression
                     (term
@@ -427,11 +427,11 @@ check if valid_date($0), resource($0);
     (check
       (rule_body
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (variable)))
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (variable)))))))
 
@@ -448,7 +448,7 @@ allow if true;
 (source_file
   (authorizer_element
     (fact
-      (nname)
+      (predicate_name)
       (fact_term
         (string))))
   (authorizer_element
@@ -474,29 +474,29 @@ allow if true;
 (source_file
   (authorizer_element
     (fact
-      (nname)
+      (predicate_name)
       (fact_term
         (string))))
   (authorizer_element
     (fact
-      (nname)
+      (predicate_name)
       (fact_term
         (string))))
   (authorizer_element
     (check
       (rule_body
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (variable))
           (term
             (variable)))
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (variable)))
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (variable))))))
   (authorizer_element
@@ -519,24 +519,24 @@ check if query(2), query(3) trusting ed25519/a060270db7e9c9f06e8f9cc33a64e99f659
 (source_file
   (authorizer_element
     (fact
-      (nname)
+      (predicate_name)
       (fact_term
         (number))))
   (authorizer_element
     (rule
       (predicate
-        (nname)
+        (predicate_name)
         (term
           (number))
         (term
           (number)))
       (rule_body
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (number)))
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (number)))
         (origin_clause
@@ -546,11 +546,11 @@ check if query(2), query(3) trusting ed25519/a060270db7e9c9f06e8f9cc33a64e99f659
     (check
       (rule_body
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (number)))
         (predicate
-          (nname)
+          (predicate_name)
           (term
             (number)))
         (origin_clause
@@ -582,7 +582,7 @@ check if {1, 2}.union({2, 3}) === {1, 2, 3};
                     (number))
                   (set_term
                     (number)))))
-            (nname)
+            (method_name)
             (method_argument
               (expression
                 (term
@@ -599,7 +599,7 @@ check if {1, 2}.union({2, 3}) === {1, 2, 3};
                     (number))
                   (set_term
                     (number)))))
-            (nname)
+            (method_name)
             (method_argument
               (expression
                 (term
@@ -639,7 +639,7 @@ check if {1, 2}.union({2, 3}) === {1, 2, 3};
                         (number))
                       (set_term
                         (number)))))
-                (nname)
+                (method_name)
                 (method_argument
                   (expression
                     (term
@@ -667,7 +667,7 @@ check if {1, 2}.union({2, 3}) === {1, 2, 3};
                         (number))
                       (set_term
                         (number)))))
-                (nname)
+                (method_name)
                 (method_argument
                   (expression
                     (term
@@ -705,7 +705,7 @@ allow if {"true"}.any($p -> {"true"}.all($p -> $p));
                 (set
                   (set_term
                     (string)))))
-            (nname)
+            (method_name)
             (method_argument
               (closure
                 (variable)
@@ -716,7 +716,7 @@ allow if {"true"}.any($p -> {"true"}.all($p -> $p));
                         (set
                           (set_term
                             (string)))))
-                    (nname)
+                    (method_name)
                     (method_argument
                       (closure
                         (variable)
